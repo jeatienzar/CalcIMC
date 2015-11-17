@@ -8,15 +8,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+
+// 1  hemos agregado que herede de UITextFieldDelegate
+class ViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var peso: UITextField!
-    
     @IBOutlet weak var estatura: UITextField!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //2 definimos las asignaciones a los delegados
+        peso.delegate=self
+        estatura.delegate=self
+    
+    }
+    
+    @IBAction func backgroundTap(sender:UIControl)
+    {
+        peso.resignFirstResponder()
+        estatura.resignFirstResponder()
+        
+    }
+    
+    @IBAction func textFieldDoneEditing(sender:UITextField)
+    {
+        sender.resignFirstResponder() // 3 desaparecer el teclado
+
     }
     
     
